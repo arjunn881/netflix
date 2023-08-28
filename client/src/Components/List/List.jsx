@@ -1,11 +1,11 @@
 import React from 'react'
-import 'List.scss';
+import './List.scss';
 
 
 export const List = () => {
   return (
     <div className='list'>
-        list
+        <span className='listTitle'>Continue to watch</span>
     </div>
   )
 }

@@ -26,7 +26,7 @@ export const Navbar = () => {
                 <SearchIcon className='icon'/>
                 <span>KID</span>
                 <NotificationsIcon className='icon'/>
-                <img src="" alt="" />
+                <img src="https://yt3.ggpht.com/GB1oQe4N8wsIv-bTrNn3L7ipqEVP078VO8ORjV-VbcZX3wHXEbKgGNNB2RP_lIA_YU_BZ42MsQ=s600-c-k-c0x00ffffff-no-rj-rp-mo" alt="" />
                 <div className="profile">
                 <ArrowDropDownIcon className='icon'/>
                 <div className="options">

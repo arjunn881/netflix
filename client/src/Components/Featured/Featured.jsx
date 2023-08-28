@@ -29,11 +29,11 @@ export const Featured = ({ type }) => {
         )}
       <img
         width="100%"
-        src="https://img.freepik.com/free-photo/collage-with-cars-seaside_23-2150385868.jpg?w=740&t=st=1693072516~exp=1693073116~hmac=1350ce7d95486106cc3f20b629a49ae51f5696825284653761088a27afa65cc3"
+        src="https://www.filmibeat.com/img/2023/02/saarr-1676606881.jpg"
         alt=""
       />
       <div className="info">
-        <img src="" alt="" />
+        <img src="https://igimages.gumlet.io/telugu/gallery/movies/sir2021/sirmain.jpg?w=640&dpr=1.0" alt="" />
         <span className="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut suscipit quas eligendi soluta magnam similique vel placeat id nemo sapiente eos commodi dolor, expedita libero pariatur veritatis ullam repellat unde.</span>
         <div className="buttons">
             <button className="play">
