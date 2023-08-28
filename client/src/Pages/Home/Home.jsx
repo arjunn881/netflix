@@ -1,8 +1,9 @@
 import React from 'react'
 import './Home.scss';
-import { Navbar } from '../Components/Navbar/Navbar';
-import { Featured } from '../Components/Featured/Featured';
-import { List } from '../Components/List/List';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { Featured } from '../../Components/Featured/Featured';
+import { List } from '../../Components/List/List';
+
 
 
 export const Home = () => {
@@ -10,6 +11,8 @@ export const Home = () => {
     <div className='home'>
         <Navbar/>
         <Featured type="movie"/>
+        <List/>
+        <List/>
         <List/>
         <List/>
     </div>
