@@ -1,11 +1,12 @@
 import express from 'express';
 import Movie from '../models/Movie.js';
+import verify from '../verifyToken.js';
 
 const router = express.Router();
 
 //CREATE
 
-router.post("/", async (req, res) => {
+router.post("/",verify, async (req, res) => {
   if (req.user.isAdmin) {
     const newMovie = new Movie(req.body);
     try {
@@ -21,7 +22,7 @@ router.post("/", async (req, res) => {
 
 //UPDATE
 
-router.put("/:id", async (req, res) => {
+router.put("/:id",verify, async (req, res) => {
   if (req.user.isAdmin) {
     try {
       const updatedMovie = await Movie.findByIdAndUpdate(
@@ -42,7 +43,7 @@ router.put("/:id", async (req, res) => {
 
 //DELETE
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",verify, async (req, res) => {
   if (req.user.isAdmin) {
     try {
       await Movie.findByIdAndDelete(req.params.id);
@@ -91,7 +92,7 @@ router.get("/random", async (req, res) => {
 
 //GET ALL
 
-router.get("/", async (req, res) => {
+router.get("/",verify, async (req, res) => {
   if (req.user.isAdmin) {
     try {
       const movies = await Movie.find();

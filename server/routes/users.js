@@ -1,13 +1,15 @@
 import express from 'express';
 import User from '../models/User.js';
 import CryptoJS from "crypto-js";
+import verify from '../verifyToken.js';
+
 
 const router = express.Router();
 
 
 //UPDATE
 
-router.put("/:id",  async (req, res) => {
+router.put("/:id", verify, async(req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       if (req.body.password) {
         req.body.password = CryptoJS.AES.encrypt(
@@ -36,7 +38,7 @@ router.put("/:id",  async (req, res) => {
 
   
   //DELETE
-  router.delete("/:id", async (req, res) => {
+  router.delete("/:id",verify, async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       try {
         await User.findByIdAndDelete(req.params.id);
@@ -67,7 +69,7 @@ router.put("/:id",  async (req, res) => {
 
   
   //GET ALL
-  router.get("/",  async (req, res) => {
+  router.get("/",verify,  async (req, res) => {
     const query = req.query.new;
     if (req.user.isAdmin) {
       try {
@@ -85,10 +87,10 @@ router.put("/:id",  async (req, res) => {
 
 
 
-  
+
   
   //GET USER STATS
-  router.get("/stats", async (req, res) => {
+  router.get("/stats",verify, async (req, res) => {
     const today = new Date();
     const latYear = today.setFullYear(today.setFullYear() - 1);
   
