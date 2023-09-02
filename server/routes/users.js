@@ -32,6 +32,8 @@ router.put("/:id",  async (req, res) => {
       res.status(403).json("You can update only your account!");
     }
   });
+
+
   
   //DELETE
   router.delete("/:id", async (req, res) => {
@@ -46,6 +48,9 @@ router.put("/:id",  async (req, res) => {
       res.status(403).json("You can delete only your account!");
     }
   });
+
+
+
   
   //GET
   
@@ -58,6 +63,8 @@ router.put("/:id",  async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+
   
   //GET ALL
   router.get("/",  async (req, res) => {
@@ -75,6 +82,10 @@ router.put("/:id",  async (req, res) => {
       res.status(403).json("You are not allowed to see all users!");
     }
   });
+
+
+
+  
   
   //GET USER STATS
   router.get("/stats", async (req, res) => {
