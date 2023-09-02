@@ -21,9 +21,9 @@ mongoose
   .catch((error) => console.log(error));
 
 
-  app.use('/',(re,res)=>{
-    res.json("Netflix APIs...");
-  })
+  // app.use('/',(req,res)=>{
+  //   res.json("Netflix APIs...");
+  // })
 
   app.use('/api/auth', authRouter);
   app.use('/api/user', userRouter);
