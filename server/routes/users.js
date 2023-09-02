@@ -7,6 +7,11 @@ import verify from '../verifyToken.js';
 const router = express.Router();
 
 
+router.get("/", (req, res) => {
+  res.json("working...");
+});
+
+
 //UPDATE
 
 router.put("/:id", verify, async(req, res) => {

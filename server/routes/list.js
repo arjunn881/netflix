@@ -4,6 +4,10 @@ import verify from '../verifyToken.js';
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.json("working...");
+});
+
 //CREATE
 
 router.post("/",verify,  async (req, res) => {
