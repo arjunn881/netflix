@@ -6,6 +6,10 @@ import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.json("working...");
+});
+
 //Register
 
 router.post("/register", async (req, res) => {
@@ -26,9 +30,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/", (req, res) => {
-  res.json("working...");
-});
+
 
 
 //LOGIN
