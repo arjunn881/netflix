@@ -1,16 +1,35 @@
 
 import './App.css';
-import { Login } from './Pages/Login/Login';
+import { Home } from './Pages/Home/Home';
+
 import { Watch } from './Pages/Watch/Watch';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
 
 
 
 
 function App() {
   return (
-    <div className="App">
-      <Watch/>
-    </div>
+    <Router>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+            
+          
+          <Route path="/movies" element={<Home  type="movies"/>} />
+            
+          
+          <Route path="/series" element={<Home  type="series"/>} />
+            
+          <Route path="/watch" element={<Watch/>} />
+          
+        </Routes>
+
+    </Router>
   );
 }
 

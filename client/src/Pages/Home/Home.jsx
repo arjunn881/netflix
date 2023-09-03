@@ -6,11 +6,11 @@ import { List } from '../../Components/List/List';
 
 
 
-export const Home = () => {
+export const Home = ({ type }) => {
   return (
     <div className='home'>
         <Navbar/>
-        <Featured type="movie"/>
+        <Featured type={type}/>
         <List/>
         <List/>
         <List/>
