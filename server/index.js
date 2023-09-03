@@ -7,11 +7,16 @@ import userRouter from './routes/users.js';
 import movieRouter from "./routes/movies.js";
 import listRouter from "./routes/list.js";
 
+import cors from 'cors';
+
+
+
 const app = express();
 
 dotenv.config();
 
 app.use(express.json());
+app.use(cors());
 
 
 
@@ -26,13 +31,13 @@ mongoose
   // })
 
   app.use('/api/auth', authRouter);
-  app.use('/api/user', userRouter);
-  app.use('/api/movie', movieRouter);
-  app.use('/api/list', listRouter);
+  app.use('/api/users', userRouter);
+  app.use('/api/movies', movieRouter);
+  app.use('/api/lists', listRouter);
   
 
 
-app.listen(8000, () => {
+app.listen(8800, () => {
   
   console.log("Backend Server is running....");
 });
