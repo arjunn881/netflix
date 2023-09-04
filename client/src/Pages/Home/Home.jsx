@@ -17,7 +17,7 @@ export const Home = ({ type }) => {
           {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjM3N2FmOTVmNzRkZTkzYjVlZTI1YSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2OTM3MzkxNzYsImV4cCI6MTY5NDE3MTE3Nn0.8oQkk4xNPLNOT7OX3NLtDVxJGn6UeosWwB3YEXrysP8",
+                " ",
             },
           }
         );
