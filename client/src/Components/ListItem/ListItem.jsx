@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -32,7 +33,8 @@ export const ListItem = ({ index, item }) => {
 
 
   return (
-    <div
+      <Link to={{pathname:'/watch', movie:movie}}>
+            <div
       className="listItem"
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
@@ -64,5 +66,6 @@ export const ListItem = ({ index, item }) => {
         </>
       )}
     </div>
+      </Link>
   );
 };
