@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Featured.scss";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import axios from "axios";
 
 export const Featured = ({ type }) => {
+
+  const [content, setContent] = useState({});
+
+  useEffect(()=>{
+    const getRandomContent =  async ()=>{
+      try {
+        const res = await axios.get('/')
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },[])
+
   return (
     <div className="featured">
         {type && (
