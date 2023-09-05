@@ -8,26 +8,26 @@ import axios from "axios";
 
 export const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
-  //const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState({});
 
-  // useEffect(() => {
-  //   const getMovie = async () => {
-  //     try {
-  //       const res = await axios.get("/movies/find/" + item, {
-  //         headers: {
-  //           token:
-  //             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjM3N2FmOTVmNzRkZTkzYjVlZTI1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5Mzg5MjY3OSwiZXhwIjoxNjk0MzI0Njc5fQ.GZSYdVFPs-9kln5yLuXGcgAMHrZZZWC9uMFkCV67SoE",
-  //         },
-  //       });
-  //       console.log(res);
-  //       setMovie(res.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  useEffect(() => {
+    const getMovie = async () => {
+      try {
+        const res = await axios.get("/movies/find/" + item, {
+          headers: {
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjM3N2FmOTVmNzRkZTkzYjVlZTI1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5Mzg5MjY3OSwiZXhwIjoxNjk0MzI0Njc5fQ.GZSYdVFPs-9kln5yLuXGcgAMHrZZZWC9uMFkCV67SoE",
+          },
+        });
+        console.log(res);
+        setMovie(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   getMovie();
-  // }, [item]);
+    getMovie();
+  }, [item]);
 
 
 
@@ -40,7 +40,7 @@ export const ListItem = ({ index, item }) => {
     >
 
 
-      <img src="movie.img" alt="" />
+      <img src={movie.img} alt="" />
 
       {isHovered && (
         <>
@@ -53,13 +53,13 @@ export const ListItem = ({ index, item }) => {
               <ThumbDownAltOutlinedIcon className="icon" />
             </div>
             <div className="itemInfoTop">
-              <span>movie.duration </span>
-              <span className="limit">movie.limit</span>
-              <span>movie.year</span>
+              <span>{movie.duration} </span>
+              <span className="limit">{movie.limit}</span>
+              <span>{movie.year}</span>
             </div>
-            <div className="desc">movie.desc</div>
+            <div className="desc">{movie.desc}</div>
 
-            <div className="genre">movie.genre</div>
+            <div className="genre">{movie.genre}</div>
           </div>
         </>
       )}
