@@ -4,9 +4,7 @@ import verify from '../verifyToken.js';
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json("List APIs working...");
-});
+
 
 //CREATE
 
