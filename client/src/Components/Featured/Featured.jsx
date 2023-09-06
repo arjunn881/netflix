@@ -11,12 +11,24 @@ export const Featured = ({ type }) => {
   useEffect(()=>{
     const getRandomContent =  async ()=>{
       try {
-        const res = await axios.get('/')
+        const res = await axios.get(`/movies/random?type=${type}`,{
+          headers: {
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjM3N2FmOTVmNzRkZTkzYjVlZTI1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5Mzg5MjY3OSwiZXhwIjoxNjk0MzI0Njc5fQ.GZSYdVFPs-9kln5yLuXGcgAMHrZZZWC9uMFkCV67SoE",
+          },
+        })
+
+
+
+
+        setContent(res.data[0]);
       } catch (error) {
         console.log(error);
       }
     }
-  },[])
+
+    getRandomContent();
+  },[type])
 
   return (
     <div className="featured">
@@ -43,12 +55,12 @@ export const Featured = ({ type }) => {
         )}
       <img
         width="100%"
-        src="https://www.filmibeat.com/img/2023/02/saarr-1676606881.jpg"
+        src={content.img}
         alt=""
       />
       <div className="info">
-        <img src="https://igimages.gumlet.io/telugu/gallery/movies/sir2021/sirmain.jpg?w=640&dpr=1.0" alt="" />
-        <span className="desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut suscipit quas eligendi soluta magnam similique vel placeat id nemo sapiente eos commodi dolor, expedita libero pariatur veritatis ullam repellat unde.</span>
+        <img src={content.imgTitle} alt="" />
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
             <button className="play">
                 <PlayArrowIcon/>
