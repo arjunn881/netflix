@@ -23,7 +23,7 @@ export const Home = ({ type }) => {
         );
         console.log(res.data);
          setLists(res.data)
-         setGenre();
+        
       } catch (error) {
         console.log(error);
       }
