@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react";
 import "./widgetSm.css";
 import { Visibility } from "@material-ui/icons";
+import axios from "axios";
 
 export default function WidgetSm() {
+
+
+  const [newUser,setNewUser] = useState([]);
+
+  useEffect(()=>{
+    const getNewUsers = async ()=>{
+          try {
+            const res = axios.get("/users?new=true");
+            
+          } catch (error) {
+           console.log(error); 
+          }
+    };
+
+    getNewUsers();
+  },[])
+
+
+
   return (
     <div className="widgetSm">
       <span className="widgetSmTitle">New Join Members</span>
