@@ -9,47 +9,10 @@ import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
-import { useEffect, useMemo, useState } from "react";
-import axios from 'axios';
+
 
 function App() {
-
-  const MONTHS = useMemo(()=>
-  [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "July",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ]
-  )
-
-  const [userStats,setUserStats] = useState([]); 
-
-  useEffect(()=>{
-    const getStats = async () =>{
-      try {
-        const res = await axios.get("/users/stats", {
-          headers:{
-            token : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjM3N2FmOTVmNzRkZTkzYjVlZTI1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NDI4MTE2NCwiZXhwIjoxNjk0NzEzMTY0fQ.fvqqv4I-3N8SOGB4gJ87V4FTB6LyHDfTYK9ydziG78A"
-          },
-        });
-        setUserStats(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getStats();
-  },[])
-
-  console.log(userStats);
+  
 
   return (
     <Router>
