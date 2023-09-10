@@ -4,7 +4,7 @@ import {
   Timeline,
   TrendingUp,
   PermIdentity,
-  Storefront,
+  Movie,
   AttachMoney,
   BarChart,
   MailOutline,
@@ -13,6 +13,7 @@ import {
   WorkOutline,
   Report,
 } from "@material-ui/icons";
+
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -47,10 +48,10 @@ export default function Sidebar() {
                 Users
               </li>
             </Link>
-            <Link to="/products" className="link">
+            <Link to="/movies" className="link">
               <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
-                Products
+                <Movie className="sidebarIcon" />
+                Movies
               </li>
             </Link>
             <li className="sidebarListItem">
