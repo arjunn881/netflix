@@ -17,7 +17,7 @@ export const Watch = () => {
       </Link>
 
 
-        <video className='video' autoPlay progress controls src={movie.video}/>
+        <video className='video' autoPlay progress controls src={movie?.video}/>
     </div>
   )
 }
