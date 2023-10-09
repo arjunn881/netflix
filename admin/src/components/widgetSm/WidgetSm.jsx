@@ -9,12 +9,16 @@ export default function WidgetSm() {
   useEffect(() => {
     const getNewUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/api/users?new=true", {
-          headers: {
-            token:
-            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-          },
-        });
+        const res = await axios.get(
+          "http://localhost:8800/api/users?new=true",
+          {
+            headers: {
+              token:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
+            },
+          }
+        );
         setNewUsers(res.data);
       } catch (error) {
         console.log(error);
