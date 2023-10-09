@@ -25,11 +25,6 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((error) => console.log(error));
 
-
-  // app.use('/',(req,res)=>{
-  //   res.json("Netflix APIs...");
-  // })
-
   app.use('/api/auth', authRouter);
   app.use('/api/users', userRouter);
   app.use('/api/movies', movieRouter);

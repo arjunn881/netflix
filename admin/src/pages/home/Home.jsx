@@ -31,10 +31,10 @@ export default function Home() {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("/users/stats", {
+        const res = await axios.get("http://localhost:8800/api/users/stats", {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjM3N2FmOTVmNzRkZTkzYjVlZTI1YSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5NDI4MTE2NCwiZXhwIjoxNjk0NzEzMTY0fQ.fvqqv4I-3N8SOGB4gJ87V4FTB6LyHDfTYK9ydziG78A",
+            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
 
