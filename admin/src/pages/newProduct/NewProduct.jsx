@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./newProduct.css";
+import { storage } from "../../firebase";
 
 export default function NewProduct() {
   const [movie, setMovie] = useState(null);
@@ -9,12 +10,55 @@ export default function NewProduct() {
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
 
+  const [uploaded, setUploaded] = useState(0);
+
   const handleChange = (e) => {
     const value = e.target.value;
 
     setMovie({ ...movie, [e.target.name]: value });
   };
+
+  const upload = (items) => {
+
+    items.forEach((item) => {
+      const fileName = new Date().getTime() +item.label + item.file.name;
+      const uploadTask = storage.ref(`/items/${fileName}`).put(item);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          alert("Upload is " + progress + " % done");
+        },
+        (err) => {
+          alert(err);
+        },
+        () => {
+          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+            setMovie((prev) => {
+              return { ...prev, [item.label]: url };
+            });
+
+            setUploaded((prev) => prev + 1);
+          });
+        }
+      );
+    });
+  };
   console.log(movie);
+  const handleUpload = (e) => {
+    e.preventDefault();
+    upload([
+      { file: img, label: "img" },
+      { file: imgTitle, label: "imgTitle" },
+      { file: imgSm, label: "imgSm" },
+      { file: trailer, label: "trailer" },
+      { file: video, label: "video" },
+    ]);
+  };
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+  }
 
   return (
     <div className="newProduct">
@@ -124,7 +168,13 @@ export default function NewProduct() {
             onChange={(e) => setVideo(e.target.files[0])}
           />
         </div>
-        <button className="addProductButton">Create</button>
+        {uploaded === 5 ? (
+          <button className="addProductButton" onClick={handleSubmit}>Create</button>
+        ) : (
+          <button className="addProductButton" onClick={handleUpload}>
+            Upload
+          </button>
+        )}
       </form>
     </div>
   );
