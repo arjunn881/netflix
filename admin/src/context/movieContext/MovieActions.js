@@ -10,6 +10,20 @@ export const getMoviesStart = () => ({
   export const getMoviesFailure = () => ({
     type: "GET_MOVIES_FAILURE",
   });
+
+
+  export const createMovieStart = () => ({
+    type: "CREATE_MOVIE_START",
+  });
+  
+  export const createMovieSuccess = (movie) => ({
+    type: "CREATE_MOVIE_SUCCESS",
+    payload: movie,
+  });
+  
+  export const createMovieFailure = () => ({
+    type: "CREATE_MOVIE_FAILURE",
+  });
   
   
   export const deleteMovieStart = () => ({
@@ -25,16 +39,5 @@ export const getMoviesStart = () => ({
     type: "DELETE_MOVIE_FAILURE",
   });
   
-//   export const addPostStart = () => ({
-//     type: "ADD_POST_START",
-//   });
-  
-//   export const addPostSuccess = (post) => ({
-//     type: "ADD_POST_SUCCESS",
-//     payload: post,
-//   });
-  
-//   export const addPostFailure = () => ({
-//     type: "ADD_POST_FAILURE",
-//   });
+
   
