@@ -5,16 +5,15 @@ import { createMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function NewProduct() {
+  
   const [movie, setMovie] = useState(null);
   const [img, setImg] = useState(null);
   const [imgTitle, setImgTitle] = useState(null);
   const [imgSm, setImgSm] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
-
   const [uploaded, setUploaded] = useState(0);
-
-  const {dispatch} = useContext(MovieContext)
+  const { dispatch } = useContext(MovieContext);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -23,14 +22,13 @@ export default function NewProduct() {
   };
 
   const upload = (items) => {
-
     items.forEach((item) => {
-      const fileName = new Date().getTime() +item.label + item.file.name;
+      const fileName = new Date().getTime() + item.label + item.file.name;
       const uploadTask = storage.ref(`/items/${fileName}`).put(item.file);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
-          const progress =
+          var progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + " % done");
         },
@@ -60,10 +58,10 @@ export default function NewProduct() {
       { file: video, label: "video" },
     ]);
   };
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    createMovie(movie,dispatch)
-  }
+    createMovie(movie, dispatch);
+  };
 
   return (
     <div className="newProduct">
@@ -174,11 +172,19 @@ export default function NewProduct() {
           />
         </div>
         {uploaded === 5 ? (
-          <button className="addProductButton" onClick={handleSubmit}>Create</button>
-        ) : (
-          <button className="addProductButton" onClick={handleUpload}>
-            Upload
+          <button className="addProductButton" onClick={handleSubmit}>
+            Create
           </button>
+        ) : (
+          <>
+            <button className="addProductButton" onClick={handleUpload}>
+              Upload
+            </button>
+
+            <span>Uploading................. </span>
+
+            <span>{uploaded}/ 5 </span>
+          </>
         )}
       </form>
     </div>
