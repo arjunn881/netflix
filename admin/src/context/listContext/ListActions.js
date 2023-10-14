@@ -2,9 +2,9 @@ export const getListsStart = () => ({
     type: "GET_LISTS_START",
   });
   
-  export const getListsSuccess = (movies) => ({
+  export const getListsSuccess = (lists) => ({
     type: "GET_LISTS_SUCCESS",
-    payload: movies,
+    payload: lists,
   });
   
   export const getListsFailure = () => ({
@@ -39,18 +39,18 @@ export const getListsStart = () => ({
   // });
   
   
-  // export const deleteMovieStart = () => ({
-  //   type: "DELETE_MOVIE_START",
-  // });
+  export const deleteListStart = () => ({
+    type: "DELETE_LIST_START",
+  });
   
-  // export const deleteMovieSuccess = (id) => ({
-  //   type: "DELETE_MOVIE_SUCCESS",
-  //   payload: id,
-  // });
+  export const deleteListSuccess = (id) => ({
+    type: "DELETE_LIST_SUCCESS",
+    payload: id,
+  });
   
-  // export const deleteMovieFailure = () => ({
-  //   type: "DELETE_MOVIE_FAILURE",
-  // });
+  export const deleteListFailure = () => ({
+    type: "DELETE_LIST_FAILURE",
+  });
   
 
   

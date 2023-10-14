@@ -1,6 +1,15 @@
-import { createMovieFailure, createMovieStart, createMovieSuccess, deleteMovieFailure, deleteMovieStart, deleteMovieSuccess, getMoviesFailure, getMoviesStart, getMoviesSuccess } from "./MovieActions";
+import {
+  createMovieFailure,
+  createMovieStart,
+  createMovieSuccess,
+  deleteMovieFailure,
+  deleteMovieStart,
+  deleteMovieSuccess,
+  getMoviesFailure,
+  getMoviesStart,
+  getMoviesSuccess,
+} from "./MovieActions";
 import axios from "axios";
-
 
 //Get All Movie
 export const getMovies = async (dispatch) => {
@@ -12,7 +21,7 @@ export const getMovies = async (dispatch) => {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(getMoviesSuccess(res.data))
+    dispatch(getMoviesSuccess(res.data));
   } catch (error) {
     dispatch(getMoviesFailure());
   }
@@ -20,37 +29,34 @@ export const getMovies = async (dispatch) => {
 
 //Create Movie
 
-export const createMovie = async (movie,dispatch) => {
+export const createMovie = async (movie, dispatch) => {
   dispatch(createMovieStart());
 
   try {
-   const res = await axios.post("http://localhost:8800/api/movies/",movie, {
+    const res = await axios.post("http://localhost:8800/api/movies/", movie, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(createMovieSuccess(res.data))
+    dispatch(createMovieSuccess(res.data));
   } catch (error) {
     dispatch(createMovieFailure());
   }
 };
 
-
 //Delete Movie
 
-export const deleteMovie = async (id,dispatch) => {
+export const deleteMovie = async (id, dispatch) => {
   dispatch(deleteMovieStart());
 
   try {
-    await axios.delete("http://localhost:8800/api/movies/"+id, {
+    await axios.delete("http://localhost:8800/api/movies/" + id, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(deleteMovieSuccess(id))
+    dispatch(deleteMovieSuccess(id));
   } catch (error) {
     dispatch(deleteMovieFailure());
   }
 };
-
-

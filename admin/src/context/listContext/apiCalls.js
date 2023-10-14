@@ -1,45 +1,46 @@
-import { createMovieFailure, createMovieStart, createMovieSuccess, deleteMovieFailure, deleteMovieStart, deleteMovieSuccess, getMoviesFailure, getMoviesStart, getMoviesSuccess } from "./MovieActions";
+
 import axios from "axios";
+import { deleteListFailure, deleteListStart, deleteListSuccess, getListsFailure, getListsStart, getListsSuccess } from "./ListActions";
 
 
 //Get All Movie
-export const getMovies = async (dispatch) => {
-  dispatch(getMoviesStart());
+export const getLists = async (dispatch) => {
+  dispatch(getListsStart());
 
   try {
-    const res = await axios.get("http://localhost:8800/api/movies", {
+    const res = await axios.get("http://localhost:8800/api/lists", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(getMoviesSuccess(res.data))
+    dispatch(getListsSuccess(res.data))
   } catch (error) {
-    dispatch(getMoviesFailure());
+    dispatch(getListsFailure());
   }
 };
 
-//Create Movie
+// //Create Movie
 
-export const createMovie = async (movie,dispatch) => {
-  dispatch(createMovieStart());
+// export const createMovie = async (movie,dispatch) => {
+//   dispatch(createMovieStart());
 
-  try {
-   const res = await axios.post("http://localhost:8800/api/movies/",movie, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
-    });
-    dispatch(createMovieSuccess(res.data))
-  } catch (error) {
-    dispatch(createMovieFailure());
-  }
-};
+//   try {
+//    const res = await axios.post("http://localhost:8800/api/movies/",movie, {
+//       headers: {
+//         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+//       },
+//     });
+//     dispatch(createMovieSuccess(res.data))
+//   } catch (error) {
+//     dispatch(createMovieFailure());
+//   }
+// };
 
 
 //Delete Movie
 
-export const deleteMovie = async (id,dispatch) => {
-  dispatch(deleteMovieStart());
+export const deleteList = async (id,dispatch) => {
+  dispatch(deleteListStart());
 
   try {
     await axios.delete("http://localhost:8800/api/movies/"+id, {
@@ -47,9 +48,9 @@ export const deleteMovie = async (id,dispatch) => {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
-    dispatch(deleteMovieSuccess(id))
+    dispatch(deleteListSuccess(id))
   } catch (error) {
-    dispatch(deleteMovieFailure());
+    dispatch(deleteListFailure());
   }
 };
 
