@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
 import "./List.css";
-import { Publish } from "@material-ui/icons";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function List() {
     const location = useLocation();
-    const movie = location.movie;
+    const list = location.list;
 
   return (
     <div className="product">
       <div className="productTitleContainer">
-        <h1 className="productTitle">Movie</h1>
-        <Link to="/newproduct">
+        <h1 className="productTitle">List</h1>
+        <Link to="/newList">
           <button className="productAddButton">Create</button>
         </Link>
       </div>
@@ -19,54 +18,40 @@ export default function List() {
 
           <div className="productTopRight">
               <div className="productInfoTop">
-                  <img src={movie.img} alt="" className="productInfoImg" />
-                  <span className="productName">{movie.title}</span>
+                  <img src={list.img} alt="" className="productInfoImg" />
+                  <span className="productName">{list.title}</span>
               </div>
               <div className="productInfoBottom">
                   <div className="productInfoItem">
                       <span className="productInfoKey">id:</span>
-                      <span className="productInfoValue">{movie._id}</span>
+                      <span className="productInfoValue">{list._id}</span>
                   </div>
                   <div className="productInfoItem">
                       <span className="productInfoKey">Genre:</span>
-                      <span className="productInfoValue">{movie.genre}</span>
+                      <span className="productInfoValue">{list.genre}</span>
                   </div>
                   <div className="productInfoItem">
-                      <span className="productInfoKey">Year:</span>
-                      <span className="productInfoValue">{movie.year}</span>
+                      <span className="productInfoKey">Type:</span>
+                      <span className="productInfoValue">{list.type}</span>
                   </div>
-                  <div className="productInfoItem">
-                      <span className="productInfoKey">Limit:</span>
-                      <span className="productInfoValue">{movie.limit}</span>
-                  </div>
+    
               </div>
           </div>
       </div>
       <div className="productBottom">
           <form className="productForm">
               <div className="productFormLeft">
-                  <label>Movie Title</label>
-                  <input type="text" placeholder={movie.title} />
-                  <label>Year</label>
-                    <input type="text" placeholder={movie.year}/>
+                  <label>List Title</label>
+                  <input type="text" placeholder={list.title} />
+                  <label>Type</label>
+                    <input type="text" placeholder={list.type}/>
                   <label>Genre</label>
-                    <input type="text" placeholder={movie.genre}/>
-                  <label>Limit</label>
-                    <input type="text" placeholder={movie.limit}/>
-                  <label>Trailer</label>
-                    <input type="file" placeholder={movie.trailer}/>
-                  <label>Video</label>
-                    <input type="file" placeholder={movie.video}/>
+                    <input type="text" placeholder={list.genre}/>
+
 
               </div>
               <div className="productFormRight">
-                  <div className="productUpload">
-                      <img src={movie.img} alt="" className="productUploadImg" />
-                      <label for="file">
-                          <Publish/>
-                      </label>
-                      <input type="file" id="file" style={{display:"none"}} />
-                  </div>
+
                   <button className="productButton">Update</button>
               </div>
           </form>
