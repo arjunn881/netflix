@@ -21,12 +21,13 @@ function App() {
   const { user } = useContext(AuthContext);
   return (
     <Router>
+      
       <Switch>
         <Route path="/login">
-          {user ? <Redirect to="/" /> : <Login />}
+            <Login />
           </Route>
 
-          {user && (
+          {user ?(
             <>
               <Topbar />
               <div className="container">
@@ -70,7 +71,7 @@ function App() {
 
               </div>
             </>
-          )}
+          ):(<Login/>)}
         
       </Switch>
     </Router>
